@@ -1,0 +1,53 @@
+﻿<Window x:Class="Panel.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Panel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <!-- Список реализованных блюд -->
+        <ListBox x:Name="UnimplementedDishesList" Grid.Row="1" Grid.Column="2" Margin="5">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding Weight, StringFormat='Вес: {0}'}"/>
+                        <TextBlock Text="{Binding Calories, StringFormat='Калории: {0}'}"/>
+                        <TextBlock Text="{Binding Nutrients, StringFormat='Питательные вещества: {0}'}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+
+
+        <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center">
+            <Button x:Name="MoveToUnimplementedButton" Content="Вправо" Click="MoveToUnimplementedButton_Click" />
+            <Button x:Name="MoveToImplementedButton" Content="Влево" Click="MoveToImplementedButton_Click" />
+            <Button x:Name="AddDishButton" Content="Добавить блюдо" Click="AddDishButton_Click" Margin="5"/>
+            <Button x:Name="EditDishButton" Content="Изменить блюдо" Click="EditDishButton_Click" Margin="5"/>
+            <Button x:Name="DeleteDishButton" Content="Удалить блюдо" Click="DeleteDishButton_Click" Margin="5"/>
+            <Button x:Name="IngredientsButton" Content="Ингридиенты" Click="IngredientsButton_Click" Margin="5"/>
+        </StackPanel>
+        <!-- Список нереализованных блюд -->
+        <ListBox x:Name="ImplementedDishesList" Grid.Row="1" Grid.Column="0" Margin="5">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding Weight, StringFormat='Вес: {0}'}"/>
+                        <TextBlock Text="{Binding Calories, StringFormat='Калории: {0}'}"/>
+                        <TextBlock Text="{Binding Nutrients, StringFormat='Питательные вещества: {0}'}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>
